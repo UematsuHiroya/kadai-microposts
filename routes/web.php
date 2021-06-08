@@ -23,9 +23,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 // 以下の操作はログイン時のみ動作
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource("microposts", "MicropostsController", ["only" => ["store", "destroy"]]);
 });
 
 // トップページ
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MicropostsController@index');
