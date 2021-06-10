@@ -160,7 +160,7 @@ class User extends Authenticatable
      */
     public function is_favorite($micropostId)
     {
-        // フォロー中ユーザの中に $userIdのものが存在するか
+        // お気に入り中ユーザの中に $userIdのものが存在するか
         return $this->favorites()->where('micropost_id', $micropostId)->exists();
     }
     

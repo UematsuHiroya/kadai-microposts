@@ -17,10 +17,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-3">
-                                {{-- お気に入りボタン --}}
-                            @if (Auth::user()->favorites()->exists($micropost->id)) 
+                            {{-- お気に入りボタン --}}
+                            @if (Auth::user()->favorites()->where("micropost_id", $micropost->id)->exists()) 
                                 {{-- お気に入り解除ボタンのフォーム --}}
-                                {!! Form::open(['route' => ['favorites.favorite', $micropost->id], "method" => "delete"]) !!}
+                                {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], "method" => "delete"]) !!}
                                     {!! Form::submit('UnFavorite', ['class' => 'btn btn-danger btn-sm']) !!}
                                 {!! Form::close() !!}
                             @else
@@ -29,6 +29,7 @@
                                     {!! Form::submit('Favorite', ['class' => 'btn btn-success btn-sm']) !!}
                                 {!! Form::close() !!}
                             @endif
+                            
                             </div>
                             <div class="col-sm-3">
                             {{-- 投稿削除ボタン --}}
