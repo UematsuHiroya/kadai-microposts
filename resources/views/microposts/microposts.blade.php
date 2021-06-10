@@ -14,13 +14,32 @@
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($micropost->content)) !!}</p>
                     </div>
-                    <div>
-                        @if (Auth::id() == $micropost->user_id)
-                            {{-- 投稿削除ボタンのフォーム --}}
-                            {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                            {!! Form::close() !!}
-                        @endif
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                {{-- お気に入りボタン --}}
+                            @if (Auth::user()->favorites()->exists($micropost->id)) 
+                                {{-- お気に入り解除ボタンのフォーム --}}
+                                {!! Form::open(['route' => ['favorites.favorite', $micropost->id], "method" => "delete"]) !!}
+                                    {!! Form::submit('UnFavorite', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @else
+                                {{-- お気に入り追加ボタンのフォーム --}}
+                                {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+                                    {!! Form::submit('Favorite', ['class' => 'btn btn-success btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @endif
+                            </div>
+                            <div class="col-sm-3">
+                            {{-- 投稿削除ボタン --}}
+                            @if (Auth::id() == $micropost->user_id)
+                                {{-- 投稿削除ボタンのフォーム --}}
+                                {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </li>
