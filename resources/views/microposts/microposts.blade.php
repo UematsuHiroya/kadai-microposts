@@ -21,12 +21,12 @@
                             @if (Auth::user()->favorites()->where("micropost_id", $micropost->id)->exists()) 
                                 {{-- お気に入り解除ボタンのフォーム --}}
                                 {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], "method" => "delete"]) !!}
-                                    {!! Form::submit('UnFavorite', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    {!! Form::submit(__('micropost.unfavorite'), ['class' => 'btn btn-danger btn-sm']) !!}
                                 {!! Form::close() !!}
                             @else
                                 {{-- お気に入り追加ボタンのフォーム --}}
                                 {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
-                                    {!! Form::submit('Favorite', ['class' => 'btn btn-success btn-sm']) !!}
+                                    {!! Form::submit(__('micropost.favorite'), ['class' => 'btn btn-success btn-sm']) !!}
                                 {!! Form::close() !!}
                             @endif
                             
@@ -36,7 +36,7 @@
                             @if (Auth::id() == $micropost->user_id)
                                 {{-- 投稿削除ボタンのフォーム --}}
                                 {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    {!! Form::submit(__('micropost.delete'), ['class' => 'btn btn-danger btn-sm']) !!}
                                 {!! Form::close() !!}
                             @endif
                             </div>

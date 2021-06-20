@@ -11,6 +11,7 @@
 |
 */
 
+
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -51,3 +52,5 @@ Route::group(['middleware' => ['auth']], function () {
 
 // トップページ
 Route::get('/', 'MicropostsController@index');
+
+Route::get("lang/{lang}", "LanguageController@switchLang")->name("lang.switch");
