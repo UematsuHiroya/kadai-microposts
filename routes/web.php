@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     
     // 投稿に関するルーティング
     Route::resource("microposts", "MicropostsController", ["only" => ["store", "destroy"]]);
+    Route::get("microposts/{id}", "MicropostsController@delete")->name("microposts.delete");
+    Route::get("microposts","MicropostsController@back")->name("microposts.back");
     
     // お気に入り追加/解除のルーティング
     Route::group(["prefix" => "microposts/{id}"],function() {

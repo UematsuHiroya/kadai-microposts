@@ -32,13 +32,12 @@
                             
                             </div>
                             <div class="col-sm-3">
-                            {{-- 投稿削除ボタン --}}
-                            @if (Auth::id() == $micropost->user_id)
-                                {{-- 投稿削除ボタンのフォーム --}}
-                                {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
-                                    {!! Form::submit(__('micropost.delete'), ['class' => 'btn btn-danger btn-sm']) !!}
-                                {!! Form::close() !!}
-                            @endif
+                                @if (Auth::id() == $micropost->user_id)
+                                    {{-- 投稿削除ボタンのフォーム --}}
+                                    {!! Form::open(['route' => ['microposts.delete', $micropost->id], 'method' => 'get']) !!}
+                                        {!! Form::submit(__('micropost.delete'), ['class' => 'btn btn-danger btn-sm']) !!}
+                                    {!! Form::close() !!}
+                                @endif
                             </div>
                         </div>
                     </div>

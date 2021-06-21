@@ -50,8 +50,25 @@ class MicropostsController extends Controller
         if (\Auth::id() === $micropost->user_id) {
             $micropost->delete();
         }
-        
+
         // 前のURLへリダイレクトさせる
+        return back();
+    }
+    
+    // 削除確認画面の表示
+    public function delete($id)
+    {
+        // idの値で投稿を検索して取得
+        $micropost =\App\Micropost::findOrFail($id);
+
+        // 削除確認ビューの表示
+        return view("microposts.delete_confirm", [
+            "micropost" => $micropost,
+        ]);
+    }
+    
+    public function back()
+    {
         return back();
     }
 }
