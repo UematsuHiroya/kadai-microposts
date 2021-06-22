@@ -52,7 +52,7 @@ class MicropostsController extends Controller
         }
 
         // 前のURLへリダイレクトさせる
-        return back();
+        return redirect('/');
     }
     
     // 削除確認画面の表示
@@ -67,8 +67,4 @@ class MicropostsController extends Controller
         ]);
     }
     
-    public function back()
-    {
-        return back();
-    }
 }
