@@ -27,6 +27,8 @@ class MicropostsController extends Controller
     
     public function store(Request $request)
     {
+        dd($request);
+        
         // バリデーション
         $request->validate([
             'content' => 'required|max:255',
