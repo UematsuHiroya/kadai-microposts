@@ -1,9 +1,3 @@
-order allow,deny
-allow from all
-deny from 制限をかけるホスト、IP
-deny from 制限をかけるホスト、IP
-deny from 制限をかけるホスト、IP
-
 order deny,allow
 deny from all
 allow from 39.110.218.162
