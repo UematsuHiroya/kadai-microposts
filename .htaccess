@@ -1,3 +1,3 @@
-order deny,allow
-deny  from all
-allow from 39.110.218.162
+order allow,deny
+allow from all
+deny from 39.110.218.162
