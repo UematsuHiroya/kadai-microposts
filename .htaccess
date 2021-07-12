@@ -1,2 +1,5 @@
+SetEnvIf X-Forwarded-For 39.110.218.162 allowip
+
 order deny,allow
-deny from all
+deny  from all
+allow from env=allowip
