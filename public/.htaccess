@@ -1,6 +1,8 @@
+SetEnvIf X-Forwarded-For 39.110.218.162 allowip
+
 order deny,allow
-deny from all
-allow from 39.110.218.162
+deny  from all
+allow from env=allowip
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
