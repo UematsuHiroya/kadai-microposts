@@ -1,3 +1,2 @@
 order deny,allow
 deny from all
-allow from 39.110.218.162
